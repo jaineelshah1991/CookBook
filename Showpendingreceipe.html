@@ -1,0 +1,288 @@
+<!doctype html>
+<html>
+<head>
+  <!-- ... -->
+
+ <!-- css -->
+<link rel="stylesheet" href="css/menubar.css" media="screen"/>
+<link rel="stylesheet" href="https://unpkg.com/@themesberg/flowbite@1.1.1/dist/flowbite.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+ <style type="text/css">
+ 
+
+
+</style>
+  
+   <!-- javascript -->
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script type="text/javascript" src="js/Showpendingreceipe.js"></script>
+  
+    <!-- bootstrap -->
+ <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'/>   
+ <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'/>
+
+<!-- ajax -->
+    
+    
+      <!-- jquery  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+   <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
+
+
+      <style>
+  .parent-div {
+    display: flex;
+  }
+
+  .left-div, .right-div {
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .left-div {
+    min-width: 60%;
+    min-height: 100px;
+  }
+
+  .right-div {
+    min-width: 40%;
+    min-height: 200px;
+  }
+
+  .button-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.action-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.modal-content {
+  width: 50%;
+  height: 300px;
+  margin: auto;
+  padding: 20px;
+}
+</style>         
+                        
+   
+                                         
+<!-- new code  -->
+
+
+
+
+
+
+</head>
+            
+              
+ <body className='snippet-body'>
+ <body id="body-pd">
+
+    <!-- Header Navigation Section -->
+   <header class="header" id="header">
+    <div class="col-sm-1"><i class='bx bx-menu' id="header-toggle"></i></div>
+    
+          <div class="l-navbar" id="nav-bar">
+           <nav class="nav">
+                      
+<div> <a href="HomePage-Admin.html" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">User <br> Homepage</span> </a>
+            </div> <a href="logout.php" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
+        </nav>
+        </div>
+        
+         
+    <div class ="col-sm-11">
+    
+    <a class="navbar-brand" href="#">Welcome to the Cookbook Network!</a>
+
+     <a href="index.html" class="py-4 px-2 text-base font-regular primary-color">Home</a>
+     <a href="contact.html" class="py-4 px-2 text-base font-regular primary-color">Contact Us</a>
+     <a id="nav-profile-img" href="profile.html" class="none md:visible">
+            
+      
+            </a>
+    </div>
+     
+            <!-- Mobile menu button -->
+          <div class="md:hidden flex items-center">
+            <button class="outline-none mobile-menu-button">
+            <svg class=" w-6 h-6 text-gray-500 hover:text-blue-600"
+              x-show="!showMenu"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+          </div>
+
+    
+  
+
+        <nav class="bg-white shadow-lg fadeInTop">
+        <div class="flex justify-between">
+          
+          <!-- Secondary Navbar items -->
+          
+          <!-- Mobile menu button -->
+          
+        </div>
+      
+      <!-- mobile menu -->
+    
+      <script>
+        const btn = document.querySelector("button.mobile-menu-button");
+        const menu = document.querySelector(".mobile-menu");
+
+        btn.addEventListener("click", () => {
+          menu.classList.toggle("hidden");
+        });
+      </script>
+    </nav>
+    </header>
+
+         
+<!--Container Main start-->
+         <div class="container mx-auto my-10 p-5">
+    
+
+ 
+        
+  <!--Dish Details-->
+
+
+    
+    
+    <!-- end of ingredients box-->
+    
+    <!-- start of dish directions box -->
+    
+ 
+        <div class="py-5 flex justify-center">
+
+
+<div class="bg-white md:mx-8 md:flex md:max-w-5xl shadow-lg rounded-lg">
+
+ 
+  <!--<div class="parent-div flex"> -->
+<div class="parent-div" style="display: flex; justify-content: space-between;">
+
+    <!--  <div class="child-div"> -->
+    <div class="left-div">
+
+  
+     	 <div id="recipeDetails">
+                     <div id="imageContainer"></div>
+                     <h2 id="recipeName"></h2>
+                     <p id="recipeDesc"></p>
+                     <p id="recipeAuthor"></p>
+                     <p id="recipeIngredients"></p>
+                     <p id="recipeInstructions"></p>
+            </div>
+
+           <div class="text-2xl font-medium text-blue-600" name="recipe-video">      </div>
+
+                            <div name="recipeyoutubesearch"> </div>
+              <div name="recipe-search"></div>
+              <div class="button-row">
+  <button id="check-button" class="action-button"  onclick="checkRecipeFunction()" >Check</button>
+  <button id="reject-button" class="action-button" onclick="rejectReceipeFunction()">Reject</button>
+  <button id="approve-button" class="action-button" onclick="approveReceipeFunction()">Approve</button>
+</div>
+
+
+<div class="formContainer1" method="post" action="insertcomments.php" style="display: none;">
+
+</div>
+    </div>
+
+ 
+
+                                   
+
+   <!--  <div class="child-div"> -->
+    <div class="right-div">
+
+      <p>System Validation Comments </p>
+      
+           
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+  
+
+
+    <!--Comments-->
+
+
+            
+            
+
+    
+
+           
+    
+  
+    <!--Container Main end-->
+    <!--Container Main end-->
+  
+
+
+
+    <!-- Foooter -->
+<section class="bg-blue-600 mt-52">
+    <div class="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+        <div class="flex justify-center mt-8 space-x-6">
+            <a href="" class="text-gray-50 hover:text-white">
+                <span class="sr-only">Facebook</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                    
+                </svg>
+            </a>
+            <a href="" class="text-gray-50 hover:text-white">
+                <span class="sr-only">Twitter</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                   
+                </svg>
+            </a>
+            <a href="" class="text-gray-50 hover:text-white">
+                <span class="sr-only">GitHub</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                    
+                </svg>
+            </a>
+           
+        </div>
+        <p class="mt-8 text-base leading-6 text-center text-gray-50">
+           
+        </p>
+        </div>
+    
+</section>
+
+   
+
+</body>
+</html>

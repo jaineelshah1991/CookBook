@@ -1,0 +1,460 @@
+<!doctype html>
+<html>
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- css -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/index.css" media="screen">
+
+ <link rel="stylesheet" href="https://unpkg.com/@themesberg/flowbite@1.1.1/dist/flowbite.min.css" />
+   
+   <!-- javascript -->
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+  
+	  <!-- bootstrap -->
+ <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'>	  
+ <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
+
+<!-- ajax -->
+		
+		
+		  <!-- jquery  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+ 
+  
+ 
+
+    
+                               
+                                <style>::-webkit-scrollbar {
+                                  width: 8px;
+                                }
+                                /* Track */
+                                ::-webkit-scrollbar-track {
+                                  background: #f1f1f1; 
+                                }
+                                 
+                                /* Handle */
+                                ::-webkit-scrollbar-thumb {
+                                  background: #888; 
+                                }
+                                
+                                /* Handle on hover */
+                                ::-webkit-scrollbar-thumb:hover {
+                                  background: #555; 
+                                } @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");:root{--header-height: 3rem;--nav-width: 68px;--first-color: #4723D9;--first-color-light: #AFA5D9;--white-color: #F7F6FB;--body-font: 'Nunito', sans-serif;--normal-font-size: 1rem;--z-fixed: 100}*,::before,::after{box-sizing: border-box}body{position: relative;margin: var(--header-height) 0 0 0;padding: 0 1rem;font-family: var(--body-font);font-size: var(--normal-font-size);transition: .5s}a{text-decoration: none}.header{width: 100%;height: var(--header-height);position: fixed;top: 0;left: 0;display: flex;align-items: center;justify-content: space-between;padding: 0 1rem;background-color: var(--white-color);z-index: var(--z-fixed);transition: .5s}.header_toggle{color: var(--first-color);font-size: 1.5rem;cursor: pointer}.header_img{width: 35px;height: 35px;display: flex;justify-content: center;border-radius: 50%;overflow: hidden}.header_img img{width: 40px}.l-navbar{position: fixed;top: 0;left: -30%;width: var(--nav-width);height: 100vh;background-color: var(--first-color);padding: .5rem 1rem 0 0;transition: .5s;z-index: var(--z-fixed)}.nav{height: 100%;display: flex;flex-direction: column;justify-content: space-between;overflow: hidden}.nav_logo, .nav_link{display: grid;grid-template-columns: max-content max-content;align-items: center;column-gap: 1rem;padding: .5rem 0 .5rem 1.5rem}.nav_logo{margin-bottom: 2rem}.nav_logo-icon{font-size: 1.25rem;color: var(--white-color)}.nav_logo-name{color: var(--white-color);font-weight: 700}.nav_link{position: relative;color: var(--first-color-light);margin-bottom: 1.5rem;transition: .3s}.nav_link:hover{color: var(--white-color)}.nav_icon{font-size: 1.25rem}.show{left: 0}.body-pd{padding-left: calc(var(--nav-width) + 1rem)}.active{color: var(--white-color)}.active::before{content: '';position: absolute;left: 0;width: 2px;height: 32px;background-color: var(--white-color)}.height-100{height:100vh}@media screen and (min-width: 768px){body{margin: calc(var(--header-height) + 1rem) 0 0 0;padding-left: calc(var(--nav-width) + 2rem)}.header{height: calc(var(--header-height) + 1rem);padding: 0 2rem 0 calc(var(--nav-width) + 2rem)}.header_img{width: 40px;height: 40px}.header_img img{width: 45px}.l-navbar{left: 0;padding: 1rem 1rem 0 0}.show{width: calc(var(--nav-width) + 156px)}.body-pd{padding-left: calc(var(--nav-width) + 188px)}}</style>
+<script type='text/javascript' src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
+               
+        <script type="text/javascript">
+
+$(document).ready(function() {
+    
+        Getchoice();
+  });
+
+function Getchoice()
+ {
+  $.ajax({
+    url: 'get_matching_recipe_ids.php',
+    type: 'POST',
+    dataType: 'json',
+  
+    success: function(data) {
+
+            var recipeIds = [];
+      var recipes = data;
+      console.log("Array");
+      console.log(recipes);
+      var l1 =recipes.length;
+      console.log("Length"+ l1);
+
+
+      // Get the HTML element to append the table to
+      var heading = document.getElementById("choice1");
+        heading.style.display = "block";
+
+                   // Create the table element
+            // Create the table element
+        var table = document.createElement("table");
+
+        // Create the table headers
+        var headers = ["Receipe Name", "Author Name", "Description", "Catagory", "Cuisine", "View"];
+        var thead = document.createElement("thead");
+        var tr = document.createElement("tr");
+        for (var i = 0; i < headers.length; i++) {
+          var th = document.createElement("th");
+          th.appendChild(document.createTextNode(headers[i]));
+          tr.appendChild(th);
+        }
+        thead.appendChild(tr);
+        table.appendChild(thead);
+
+        // Create the table rows with recipe data
+        var tbody = document.createElement("tbody");
+        for (var i = 0; i < l1; i++) {
+          var tr = document.createElement("tr");
+
+          // Create the table cells with recipe data
+          var tdName = document.createElement("td");
+          tdName.appendChild(document.createTextNode(recipes[i].Receipe_Name));
+          tr.appendChild(tdName);
+
+          var tdAuthor = document.createElement("td");
+          tdAuthor.appendChild(document.createTextNode(recipes[i].Author));
+          tr.appendChild(tdAuthor);
+
+          var tdDescription = document.createElement("td");
+          tdDescription.appendChild(document.createTextNode(recipes[i].ReceipeDesc));
+          tr.appendChild(tdDescription);
+
+          var tdCourse = document.createElement("td");
+          tdCourse.appendChild(document.createTextNode(recipes[i].Course_Cata));
+          tr.appendChild(tdCourse);
+
+          var tdCuisine = document.createElement("td");
+          tdCuisine.appendChild(document.createTextNode(recipes[i].Cusine));
+          tr.appendChild(tdCuisine);
+
+          var tdView = document.createElement("td");
+          var viewLink = document.createElement("a");
+
+          viewLink.setAttribute("href", "ViewReceipe.html?recipe_id=" + recipes[i].Receipe_Id);
+          viewLink.appendChild(document.createTextNode("View"));
+          tdView.appendChild(viewLink);
+          tr.appendChild(tdView);
+
+          tbody.appendChild(tr);
+        }
+
+        // Add the table body to the table
+        table.appendChild(tbody);
+
+        // Add the table to the element
+        heading.appendChild(table);
+
+
+      // Call another function to fetch recipe details based on the IDs
+    },
+    error: function(xhr, status, error) {
+      console.error('Error getting matching recipe IDs:', error);
+    }
+  });
+}
+
+
+        </script>
+               <style type="text/css">
+                
+
+  #cancel-popup1 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid black;
+    padding: 100px;
+    z-index: 9999;
+}
+
+#cancel-popup1 form {
+    display: flex;
+    flex-direction: column;
+}
+
+#cancel-popup1 label {
+    margin-bottom: 10px;
+}
+
+#cancel-popup1 textarea {
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+#cancel-popup1 button {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+#cancel-popup1 button:hover {
+    background-color: darkred;
+}
+
+#cancel-popup1 .cancel-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.showchoisetable {
+      display: none;
+    }
+    
+ h2 {
+    color: #555;
+  }
+
+table {
+     border-collapse: collapse;
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 100%; /* Add this line */
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ccc;
+    }
+
+    th {
+      background-color: var(--first-color);
+      color: var(--white-color);
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #ddd;
+    }
+a {
+  text-decoration: none;
+  color: #0077cc;
+}
+               </style>                
+<script type="text/javascript">
+
+function showCancelPopup1() {
+  document.getElementById("cancel-popup1").style.display = "block";
+}
+
+
+function hideCancelPopup1() {
+  document.getElementById("cancel-popup1").style.display = "none";
+}
+
+</script>			    
+							
+ <body className='snippet-body'>
+ <body id="body-pd">
+
+    <!-- Header Navigation Section -->
+	
+	 <header class="header" id="header">
+		<div class="col-sm-1"><i class='bx bx-menu' id="header-toggle"></i></div>
+		
+		      <div class="l-navbar" id="nav-bar">
+			   <nav class="nav">
+			               <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">Dashboard</span> </a>
+		<div> <a href="Viewprofile.html" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">View/Edit Profile</span> </a>
+				<div> <a href="SearchReceipe.html" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">Search Receipes </span> </a>
+     </div> 
+
+      <div class="menu-item">
+    <a href="#" class="nav_link" id="cancel-account-btn" onclick="showCancelPopup1()">
+      <i class='bx bx-log-out nav_icon'></i> 
+      <span class="nav_name">Delete Account</span> 
+    </a>
+</div>
+<a href="logout.php" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
+        </nav>
+			  </div>
+			  
+	       
+		<div class ="col-sm-11">
+		
+		<a class="navbar-brand" href="#">Welcome to the Cookbook Network!</a>
+
+		 <a href="index.html" class="py-4 px-2 text-base font-regular primary-color">Home</a>
+		 <a href="contact.html" class="py-4 px-2 text-base font-regular primary-color">Contact Us</a>
+		 <a id="nav-profile-img" href="profile.html" class="none md:visible">
+						
+			
+						</a>
+		</div>
+		 
+						<!-- Mobile menu button -->
+					<div class="md:hidden flex items-center">
+						<button class="outline-none mobile-menu-button">
+						<svg class=" w-6 h-6 text-gray-500 hover:text-blue-600"
+							x-show="!showMenu"
+							fill="none"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path d="M4 6h16M4 12h16M4 18h16"></path>
+						</svg>
+					</button>
+					</div>
+
+    
+	
+
+        <nav class="bg-white shadow-lg fadeInTop">
+			<div class="max-w-2xl mx-auto px-2">
+				<div class="flex justify-between">
+					
+					<!-- Secondary Navbar items -->
+					
+					<!-- Mobile menu button -->
+					
+				</div>
+			
+			<!-- mobile menu -->
+		
+			<script>
+				const btn = document.querySelector("button.mobile-menu-button");
+				const menu = document.querySelector(".mobile-menu");
+
+				btn.addEventListener("click", () => {
+					menu.classList.toggle("hidden");
+				});
+			</script>
+		</nav>
+    </header>
+
+<!--Container Main start-->
+    <div class="height-100 bg-light">
+		
+	 <div class="container mx-auto my-5 p-5">
+	 
+		<div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+							
+	  <div class="showchoisetable" id="choice1">
+          <h2>Recipes For You </h2>
+
+      </div>
+	 
+				   
+                            
+						
+               </div>  
+                </div>                
+                        </div>
+
+        <div id="cancel-popup1" style="display: none;">
+     <div class="cancel-icon1" onclick="hideCancelPopup1()">
+            <i class="bx bx-x cancel-icon" onclick="hideCancelPopup1()"></i>
+
+    <i class="fas fa-times"></i>
+  </div>
+    <form method="post" action="removeaccount.php">
+
+        <label for="cancel-reason1">Reason for cancellation:</label><br>
+        <textarea id="cancel-reason1" name="cancel-reason"></textarea><br>
+        <button type="submit1">Submit</button>
+    </form>
+</div>
+
+
+	
+	
+    <!--Container Main end-->
+	
+	 <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
+                                <script type='text/javascript' src='#'></script>
+                                <script type='text/javascript' src='#'></script>
+                                <script type='text/javascript' src='#'></script>
+                                <script type='text/javascript'>document.addEventListener("DOMContentLoaded", function(event) {
+   
+const showNavbar = (toggleId, navId, bodyId, headerId) =>{
+const toggle = document.getElementById(toggleId),
+nav = document.getElementById(navId),
+bodypd = document.getElementById(bodyId),
+headerpd = document.getElementById(headerId)
+
+// Validate that all variables exist
+if(toggle && nav && bodypd && headerpd){
+toggle.addEventListener('click', ()=>{
+// show navbar
+nav.classList.toggle('show')
+// change icon
+toggle.classList.toggle('bx-x')
+// add padding to body
+bodypd.classList.toggle('body-pd')
+// add padding to header
+headerpd.classList.toggle('body-pd')
+})
+}
+}
+
+showNavbar('header-toggle','nav-bar','body-pd','header')
+
+/*===== LINK ACTIVE =====*/
+const linkColor = document.querySelectorAll('.nav_link')
+
+function colorLink(){
+if(linkColor){
+linkColor.forEach(l=> l.classList.remove('active'))
+this.classList.add('active')
+}
+}
+linkColor.forEach(l=> l.addEventListener('click', colorLink))
+
+ // Your code to run since DOM is loaded and ready
+});</script>
+                                <script type='text/javascript'>var myLink = document.querySelector('a[href="#"]');
+                                myLink.addEventListener('click', function(e) {
+                                  e.preventDefault();
+                                });</script>
+								
+								
+    <div class="container mx-auto my-5 p-5">
+        <div class="md:flex no-wrap md:-mx-2">
+            
+            </div>
+            <div class="my-4"></div>
+            <!-- Right Side -->
+            
+    </div>
+
+    <!-- Foooter -->
+<section class="bg-blue-600 mt-52">
+    <div class="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+        <div class="flex justify-center mt-8 space-x-6">
+            <a href=" class="text-gray-50 hover:text-white">
+                <span class="sr-only">Facebook</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+                </svg>
+            </a>
+            <a href="" class="text-gray-50 hover:text-white">
+                <span class="sr-only">Twitter</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                </svg>
+            </a>
+            <a href="" class="text-gray-50 hover:text-white">
+                <span class="sr-only">GitHub</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+                </svg>
+            </a>
+           
+        </div>
+        <p class="mt-8 text-base leading-6 text-center text-gray-50">
+           
+        </p>
+    
+</section>
+
+    <script type="text/javascript" src="../scripts/loginHandler.js" ></script>
+    <script type="text/javascript" src="../scripts/otherProfileHandler.js"></script>
+    <!-- <script type="text/javascript" src="../scripts/profileHandler.js"></script> -->
+
+</body>
+</html>

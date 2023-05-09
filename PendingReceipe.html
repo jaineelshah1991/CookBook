@@ -1,0 +1,404 @@
+<!doctype html>
+<html>
+<head>
+  <!-- ... -->
+
+ <!-- css -->
+<link rel="stylesheet" href="css/menubar.css" media="screen"/>
+<link rel="stylesheet" href="https://unpkg.com/@themesberg/flowbite@1.1.1/dist/flowbite.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+ <style type="text/css">
+  
+.like-button i.fas.fa-thumbs-up,
+  .dislike-button i.fas.fa-thumbs-down,
+  .like-count i.fas.fa-heart,
+  .share-button i.fas.fa-share {
+    color: blue;
+  }
+    .recipeabc {
+  width: 1000px;
+  height: auto;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f7f7f7;
+}
+
+.recipe-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.recipe-image-column {
+  width: 50%;
+}
+
+
+#comment-form-container {
+  margin-bottom: 30px;
+}
+
+#comment-form input, #comment-form textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+#comment-form button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#comment-form button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+#comments-container {
+  margin-top: 30px;
+  margin-left: 50px; /* adjust as needed */
+
+  width:80%;
+}
+
+.hidden {
+        display: none;
+
+}
+#comment-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#comment-list li {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #f9f9f9;
+}
+
+#comment-list li span {
+  font-weight: bold;
+}
+
+rsor: pointer;
+}
+</style>
+  
+   <!-- javascript -->
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<script type="text/javascript" src="js/viewreceipe.js"></script>
+  
+    <!-- bootstrap -->
+ <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'/>   
+ <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'/>
+
+<!-- ajax -->
+    
+    
+      <!-- jquery  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
+   <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
+
+
+      
+                                
+                        
+   
+                                         
+<!-- new code  -->
+
+
+
+
+
+
+</head>
+            
+              
+ <body className='snippet-body'>
+ <body id="body-pd">
+
+    <!-- Header Navigation Section -->
+   <header class="header" id="header">
+    <div class="col-sm-1"><i class='bx bx-menu' id="header-toggle"></i></div>
+    
+          <div class="l-navbar" id="nav-bar">
+           <nav class="nav">
+                         <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">View/Edit Profile</span> </a></div>
+            <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">Search Receipes</span> </a></div>
+
+            <div> <a href="CreateReceipe.html" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">Create Receipe</span> </a></div>
+<div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">Create Channel</span> </a>
+            </div> <a href="logout.php" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>
+        </nav>
+        </div>
+        
+         
+    <div class ="col-sm-11">
+    
+    <a class="navbar-brand" href="#">Welcome to the Cookbook Network!</a>
+
+     <a href="index.html" class="py-4 px-2 text-base font-regular primary-color">Home</a>
+     <a href="contact.html" class="py-4 px-2 text-base font-regular primary-color">Contact Us</a>
+     <a id="nav-profile-img" href="profile.html" class="none md:visible">
+            
+      
+            </a>
+    </div>
+     
+            <!-- Mobile menu button -->
+          <div class="md:hidden flex items-center">
+            <button class="outline-none mobile-menu-button">
+            <svg class=" w-6 h-6 text-gray-500 hover:text-blue-600"
+              x-show="!showMenu"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+          </div>
+
+    
+  
+
+        <nav class="bg-white shadow-lg fadeInTop">
+        <div class="flex justify-between">
+          
+          <!-- Secondary Navbar items -->
+          
+          <!-- Mobile menu button -->
+          
+        </div>
+      
+      <!-- mobile menu -->
+    
+      <script>
+        const btn = document.querySelector("button.mobile-menu-button");
+        const menu = document.querySelector(".mobile-menu");
+
+        btn.addEventListener("click", () => {
+          menu.classList.toggle("hidden");
+        });
+      </script>
+    </nav>
+    </header>
+
+         
+<!--Container Main start-->
+         <div class="container mx-auto my-10 p-5">
+    
+
+ 
+        
+  <!--Dish Details-->
+    
+    <div class="py-5 flex justify-center">
+    <div class="bg-white w-11/12 md:w-7/10 md:mx-8 md:flex md:max-w-5xl shadow-lg rounded-lg">
+         <table id="recipeabc" class="recipe-table">
+             
+         </table>
+
+    </div>
+</div>
+
+    
+    
+    <!-- end of ingredients box-->
+    
+    <!-- start of dish directions box -->
+    
+    <div>
+        <div class="py-5 flex justify-center">
+            <div class="bg-white w-11/12 md:w-7/10 md:mx-8 md:flex md:max-w-5xl shadow-lg rounded-lg">
+                
+                <main>
+        <section class="recipe">
+            
+            <div class="text-3xl font-medium text-blue-600" name="receipeinstruction">
+                
+            </div>
+
+            <div id="recipeDetails">
+                     <div id="imageContainer"></div>
+                     <h2 id="recipeName"></h1>
+                     <p id="recipeDesc"></p>
+                     <p id="recipeAuthor"></p>
+                     <p id="recipeIngredients"></p>
+                     <p id="recipeInstructions"></p>
+            </div>
+            <div class="text-3xl font-medium text-blue-600" name="recipe-video">
+            
+                            
+            </div>
+
+            <div name="recipe-search">
+                                     <div name="recipeyoutubesearch"> </div>
+
+            </div>
+            
+                <!--Like button-->
+                
+                
+            <div class="recipe-actions">
+                    <button class="like-button"><i class="fas fa-thumbs-up"></i> Like</button> &nbsp; &nbsp;
+<button class="dislike-button"><i class="fas fa-thumbs-down"></i> Dislike</button> &nbsp; &nbsp;
+<span class="like-count"><i class="fas fa-heart"></i> likes</span> &nbsp; &nbsp;
+<span class="total-like-count"><i class="fas fa-heart"></i> Total Likes</span> &nbsp; &nbsp;
+
+<!-- button class="share-button"><i class="fas fa-share"></i> Share</button> -->
+
+                
+                
+
+
+            </div>
+            
+        </section>
+
+    
+
+            </div>
+        </div> 
+    </div>
+    
+    
+    
+    
+
+
+    <!--Comments-->
+
+
+        <div class="py-5 flex justify-center">
+            <div class="bg-white w-11/12 md:w-7/10 md:mx-8 md:flex md:max-w-5xl shadow-lg rounded-lg">
+
+             <div class="incomment">
+          <form name="commentsinsert"  method="post" action="insertcomments.php">
+            <input type="hidden" id="hf1" name="recipe_id" value="">
+            <div class="flex flex-wrap -mx-3 mb-6">
+                <h2  style="color: blue; font-size: 24px;" class="px-4 pt-3 pb-2 text-gray-800 text-lg font-medium">Add a new comment</h2>
+                <div class="w-full md:w-full px-3 mb-2 mt-2">
+                    <input 
+                        type="text"
+                        class="block border border-grey-light w-full p-2 rounded mb-4 font-light"
+                        id="Rname"
+                        name="iRname" required
+                        placeholder=""
+                    />
+                </div>
+                <div class="w-full md:w-full flex items-start md:w-full px-3">
+                    <div class="">
+                          <button type="submit"  name="myButton" id="myButton1"   class="w-full text-center py-3 rounded bg-blue-600 text-white hover:bg-blue-700 focus:outline-none my-1 font-regular"> Submit </button> 
+                    </div>
+                </div>
+            </div>
+        </form>
+      </div>
+        
+        
+       
+    </div>
+ </div>
+ 
+ <div>
+        <div class="py-5 flex justify-center">
+            <div class="bg-white w-11/12 md:w-7/10 md:mx-8 md:flex md:max-w-5xl shadow-lg rounded-lg">
+                
+        <section class="recipe">
+         
+        <input type="hidden" id="hf1" name="recipe_id" value="">
+            <div class="flex flex-wrap -mx-3 mb-6">
+               
+               <div id="comments-container" class="hidden">
+                <h3 style="color: blue; font-size: 24px;">Comments</h3>
+                  <span class="comment-count">Total Comments: <span id="total-comments">0</span></span>
+
+                <ul id="comment-list" style="width: 600%;"></ul>
+              </div>
+
+            </div>
+            
+        </section>
+
+    
+
+            </div>
+        </div> 
+    </div>
+    
+    
+    
+        
+
+
+    
+
+      
+
+</div>
+
+           
+    
+  
+    <!--Container Main end-->
+    <!--Container Main end-->
+  
+
+                
+                
+    <div class="container mx-auto my-5 p-5">
+        <div class="md:flex no-wrap md:-mx-2">
+            
+            </div>
+            <div class="my-4"></div>
+            <!-- Right Side -->
+            
+    </div>
+
+    <!-- Foooter -->
+<section class="bg-blue-600 mt-52">
+    <div class="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+        <div class="flex justify-center mt-8 space-x-6">
+            <a href="" class="text-gray-50 hover:text-white">
+                <span class="sr-only">Facebook</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                    
+                </svg>
+            </a>
+            <a href="" class="text-gray-50 hover:text-white">
+                <span class="sr-only">Twitter</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                   
+                </svg>
+            </a>
+            <a href="" class="text-gray-50 hover:text-white">
+                <span class="sr-only">GitHub</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                    
+                </svg>
+            </a>
+           
+        </div>
+        <p class="mt-8 text-base leading-6 text-center text-gray-50">
+           
+        </p>
+        </div>
+    
+</section>
+
+   
+
+</body>
+</html>

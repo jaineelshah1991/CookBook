@@ -1,0 +1,419 @@
+<!doctype html>
+<html>
+<head>
+<title>
+            Cookbook Network
+        </title>
+		
+		<meta name="description" content="Social Network for food">
+        <meta author="Janieel Shah, Dharmay Prajapati, and Jose M Serra Jr">
+		
+		
+  <!-- CSS... -->
+<link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="../css/nicepage.css" media="screen">
+<link rel="stylesheet" href="../css/index.css" media="screen">
+<link rel="stylesheet" type="text/css" href="css/signuppage.css">
+
+<link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+
+<!-- boostrap -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/js/bootstrap.bundle.min.js"></script>
+<script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'></script>
+<!-- Ajax... -->
+
+<!-- jquery... -->
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
+
+	<!-- java script... -->
+<script src="../data1.js"></script>
+<script src="../data3.js"></script>
+<script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+<script type="text/javascript" src="js/signupvalidation.js"> </script>
+		
+  
+
+    
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Welcome to the Cookbook Network!</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                   <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                  </li>
+				  <li class="nav-item">
+                    <a class="nav-link" href="AboutUs.html">About US</a>
+                  </li>
+				  <li class="nav-item">
+                    <a class="nav-link" href="Contact.html">Contact US</a>
+                  </li>
+				                    <li class="nav-item">
+                    <a class="nav-link" href="login.html">Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="Sign-up.html">Signup</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+       
+       		
+          <div class="row mt-3">
+            <div class="col-sm-8 offset-sm-2">
+               <center><h3 class="mb-5 text-xl text-center font-small text-blue-600">Membership options </h3></center>
+              </div>
+            </div>
+			
+			
+          </div>
+		  
+		 <div class="row mt-3">
+		 <div class="col-sm-8 offset-sm-2">
+				
+				</div>
+				</div>
+				 <div class="row mt-3">
+		 <div class="col-sm-8 offset-sm-2">
+				</div>
+				</div>
+ <section class="u-align-center u-clearfix u-grey-5 u-section-1" id="carousel_1a8c">
+
+
+				<div class ="Main">
+				
+				<div class="col1" id="div1" value=0>
+		<div class="pricingTable">
+                    <h3 class="title">STANDARD</h3>
+                    <div class="price-value">
+                        
+                        <span class="amount">Free</span>
+                    </div>
+                    <ul class="pricing-content">
+                        <li>Unable to Create Receipe Post</li>
+                        <li>Unable to Create Channels</li>
+
+                    </ul>
+					<button id="btn1" onclick="myFunction()" class="pricingTable-signup" value=0>Sign Up with Free Memebership</button>
+
+                </div>
+	</div>
+	<div class="col2" id="div2" value =10>
+		 <div class="pricingTable blue">
+                    <h3 class="title">PREMIUM</h3>
+                    <div class="price-value">
+                        <span class="currency">$</span>
+                        <span class="amount">1.00</span>
+                        <span class="month">/Year</span>
+                    </div>
+                    <ul class="pricing-content">
+                       <li>Able to Create Receipe Post</li>
+                        <li>Able to Create Channels</li>
+                    </ul>
+					<button onclick="myFunction1()" id="btn2"  class="pricingTable-signup" value=10>Sign Up with Premimum Memebership</button>
+                </div>
+				
+	</div>
+	
+		<div class="row" id="divsignupfree" >
+	
+			
+            <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+			<form name ="free" action="signup.php" method="POST" enctype="multipart/form-data">
+                <h1 class="mb-8 text-3xl text-center font-medium text-blue-600">Sign up</h1>
+                <input 
+                    type="text"
+                    class="block border border-grey-light w-full p-3 rounded mb-4 font-light"
+                    id="Fname"
+                    name="firstname"
+                    placeholder="First Name" 					/>
+					<label id='Fname'></label>
+
+					 <input 
+                    type="text"
+                    class="block border border-grey-light w-full p-3 rounded mb-4 font-light"
+                    id="Lname"
+                    name="lastname" 
+                    placeholder="Last Name" />
+
+                <input 
+                    type="text"
+                    class="block border border-grey-light w-full p-3 rounded mb-4 font-light"
+                    id="email"
+                    name="Email"
+                    placeholder="Email/UserId" 
+					/>
+
+                <input 
+                    type="password"
+                    class="block border border-grey-light w-full p-3 rounded mb-4 font-light"
+                    id="Password"
+                    name="password"
+                    placeholder="Password" 
+					/>
+                <label><p> password minimum 6 characters at least one number, one lowercase and one uppercase letter</p></label>
+               			 <select 
+                      id="securityquestion"
+                    class="block border border-grey-light w-full p-3 rounded mb-4 font-light"
+                                        name="question"
+                    required >
+
+					 <option value="" disabled selected hidden>Choose Security Question</option>
+  <option value="Favourate Actor">What is your Favourate Actor</option>
+  <option value="First School Name">What is your First School Name</option>
+  <option value="Birthplace">What is your Birthplace </option>
+  <option value="favourate Movie">Whcih is your favourate Movie</option>					</select>	
+					
+				<input 
+                    type="text"
+                    class="block border border-grey-light w-full p-3 rounded mb-4 font-light"
+                    id="answersq"
+                    name="answer"
+                    placeholder="Answer"  />
+				
+				 <!-- Add profile image upload field -->
+				
+					
+					      <input type="file" id="fileToUpload" name="fileToUpload"  
+						  class="block border border-grey-light w-full p-3 rounded mb-4 font-light" placeholder="upload only JPEG and JPG images ">
+ <label id="recipe_image_error" class="hidden text-red-500">Please select a JPEG or JPG image.</label>
+ 
+					
+				<input 
+                    type="text"
+                    class="block border border-grey-light w-full p-3 rounded mb-4 font-light"
+                    id="City"
+                    name="city"
+                    placeholder="City" />
+					
+					
+					
+				<input 
+                    type="text"
+                    class="block border border-grey-light w-full p-3 rounded mb-4 font-light"
+                    id="zip"
+                    name="zipcode"
+                    placeholder="Zip Code" />
+		
+				<input 
+                    type="text"
+                    class="block border border-grey-light w-full p-3 rounded mb-4 font-light"
+                    id="mobile"
+                    name="contact"
+                    placeholder="Contact XXX-XXX-XXXX"  
+					
+					/>
+					</div>
+                <button
+                    type="submit"   id="myButton" onclick="ValidateForm()"
+                    class="w-full text-center py-3 rounded bg-blue-600 text-white hover:bg-blue-700 focus:outline-none my-1 font-regular"
+                >Submit </button>
+			
+                <div class="text-grey-dark mt-6 font-regular">
+                Already have an account? 
+                <a class="no-underline border-b border-blue text-blue-600" href="login.html">
+                    Log in
+                </a>.
+            </div>
+			</form>
+            </div>
+			
+						    	<div class="row" id="divsignuppaid">
+			
+			  <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+			  			<form name ="paid" action="signuppaid.php" method="post">
+
+                <h1 class="mb-8 text-3xl text-center font-medium text-blue-600">Sign up</h1>
+                <input 
+                    type="text"
+                    class="block border border-grey-light w-full p-3 rounded mb-4 font-light"
+                    id="Fname1"
+                    name="firstname"
+                    placeholder="First Name"                    />
+                    <label id='Fname'></label>
+
+                     <input 
+                    type="text"
+                    class="block border border-grey-light w-full p-3 rounded mb-4 font-light"
+                    id="Lname1"
+                    name="lastname" 
+                    placeholder="Last Name" />
+
+                <input 
+                    type="text"
+                    class="block border border-grey-light w-full p-3 rounded mb-4 font-light"
+                    id="email1"
+                    name="Email"
+                    placeholder="Email" 
+                    />
+
+                <input 
+                    type="password"
+                    class="block border border-grey-light w-full p-3 rounded mb-4 font-light"
+                    id="Password1"
+                    name="password"
+                    placeholder="Password" 
+                    />
+  
+                         <select 
+                      id="securityquestion1"
+                    class="block border border-grey-light w-full p-3 rounded mb-4 font-light"
+                                        name="question"
+                    required >
+
+                     <option value="" disabled selected hidden>Choose Security Question</option>
+  <option value="Favourate Actor">What is your Favourate Actor</option>
+  <option value="First School Name">What is your First School Name</option>
+  <option value="Birthplace">What is your Birthplace </option>
+  <option value="favourate Movie">Whcih is your favourate Movie</option>                    </select>   
+                    
+                <input 
+                    type="text"
+                    class="block border border-grey-light w-full p-3 rounded mb-4 font-light"
+                    id="answersq1"
+                    name="answer"
+                    placeholder="Answer"  />
+                
+               
+                
+                <input 
+                    type="text"
+                    class="block border border-grey-light w-full p-3 rounded mb-4 font-light"
+                    id="City1"
+                    name="city"
+                    placeholder="City" />
+                    
+                    
+                    
+                <input 
+                    type="text"
+                    class="block border border-grey-light w-full p-3 rounded mb-4 font-light"
+                    id="zip1"
+                    name="zipcode"
+                    placeholder="Zip Code" />
+        
+                <input 
+                    type="text"
+                    class="block border border-grey-light w-full p-3 rounded mb-4 font-light"
+                    id="mobile1"
+                    name="contact"
+                    placeholder="Contact XXX-XXX-XXXX"  
+                    
+                    />
+                                   		
+					<input 
+                    type="text"
+                    class="block border border-grey-light w-full p-3 rounded mb-4 font-light"
+                    id="Cardfullname"
+                    name="cardfullname"
+                    placeholder="Name On Card " />
+            
+				<input 
+                    type="hidden" value =10 
+                    class="block border border-grey-light w-full p-3 rounded mb-4 font-light"
+                    id='plan'
+                    name="plan"
+                    placeholder=" " />
+
+                    <input 
+                    type="text"
+                    class="block border border-grey-light w-full p-3 rounded mb-4 font-light"
+                    id="CardNo"
+                    name="cardnumber"
+                    placeholder="Card Number" />
+
+                    <input 
+                    type="password"
+                    class="block border border-grey-light w-full p-3 rounded mb-4 font-light"
+                    id="CVV"
+
+                    name="cvv"
+                    placeholder="CVV" />
+
+                    <input 
+                    type="text"
+                    class="block border border-grey-light w-full p-3 rounded mb-4 font-light"
+                    id="expdate"
+                    name="Expdate"
+                    placeholder="Expire Date (mm/yy)"   />
+					
+                 <button
+                    type="submit"   id="myButton" onclick="ValidateForm2()"
+                    class="w-full text-center py-3 rounded bg-blue-600 text-white hover:bg-blue-700 focus:outline-none my-1 font-regular"
+                >Submit </button>
+			
+               
+            </div>
+
+            <div class="text-grey-dark mt-6 font-regular">
+                Already have an account? 
+                <a class="no-underline border-b border-blue text-blue-600" href="login.html">
+                    Log in
+                </a>.
+            </div>
+			</form>
+	</div>
+			 </div>	
+	</section>
+		 
+		  
+			  
+			 
+			  
+			  
+    <!--Login Section
+	
+ 
+		
+
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+<br><br><br><br>
+	<!-- Foooter -->
+	
+	<!-- 
+<section class="bg-blue-600">
+    <div class="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+        <div class="flex justify-center mt-8 space-x-6">
+            <a href="" class="text-gray-50 hover:text-white">
+                <span class="sr-only">Facebook</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+                </svg>
+            </a>
+            <a href="" class="text-gray-50 hover:text-white">
+                <span class="sr-only">Twitter</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                </svg>
+            </a>
+            <a href="" class="text-gray-50 hover:text-white">
+                <span class="sr-only">GitHub</span>
+                <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+                </svg>
+            </a>
+           
+        </div>
+        <p class="mt-8 text-base leading-6 text-center text-gray-50">
+        </p>
+    
+</section> -->
+
+	<script type="text/javascript" src="../scripts/loginHandler.js" ></script>
+
+</body>
+
+</html>

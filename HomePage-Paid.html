@@ -1,0 +1,628 @@
+<!doctype html>
+<html>
+<head>
+
+<!-- css -->
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css" media="screen">
+ <link rel="stylesheet" href="https://unpkg.com/@themesberg/flowbite@1.1.1/dist/flowbite.min.css" />
+
+
+   
+   <!-- javascript -->
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+  
+    <!-- bootstrap -->
+ <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css' rel='stylesheet'>   
+ <link href='https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css' rel='stylesheet'>
+
+<!-- ajax -->
+    
+    
+      <!-- jquery  -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+
+ <script>
+document.addEventListener("DOMContentLoaded", function() {
+
+
+
+
+
+});
+</script>
+                                <script type='text/javascript'>var myLink = document.querySelector('a[href="#"]');
+                                myLink.addEventListener('click', function(e) {
+                                  e.preventDefault();
+                                });</script>
+                
+
+ <style type="text/css">
+
+        #cancel-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid black;
+    padding: 100px;
+    z-index: 9999;
+}
+
+#cancel-popup form {
+    display: flex;
+    flex-direction: column;
+}
+
+#cancel-popup label {
+    margin-bottom: 10px;
+}
+
+#cancel-popup textarea {
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+#cancel-popup button {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+#cancel-popup button:hover {
+    background-color: darkred;
+}
+
+#cancel-popup .cancel-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+      .image-container1 {
+  display: flex;
+  flex-wrap: nowrap;
+ 
+  scroll-snap-type: x mandatory;
+}
+
+.image-container1 img {
+  scroll-snap-align: center;
+  margin-right: 10px;
+  max-height: 800px;
+  max-width: 500px;
+}
+
+.recipes-list {
+  width: 1400px; /* Set your desired width here */
+}
+.menu-item {
+  margin-right: 20px; /* Adjust this value as needed */
+}
+
+
+  #cancel-popup1 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid black;
+    padding: 100px;
+    z-index: 9999;
+}
+
+#cancel-popup1 form {
+    display: flex;
+    flex-direction: column;
+}
+
+#cancel-popup1 label {
+    margin-bottom: 10px;
+}
+
+#cancel-popup1 textarea {
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+#cancel-popup1 button {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+#cancel-popup1 button:hover {
+    background-color: darkred;
+}
+
+#cancel-popup1 .cancel-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+table {
+     border-collapse: collapse;
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 100%; /* Add this line */
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ccc;
+    }
+
+    th {
+      background-color: var(--first-color);
+      color: var(--white-color);
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #ddd;
+    }
+a {
+  text-decoration: none;
+  color: #0077cc;
+}
+    </style>
+      <script>
+  $(document).ready(function() {
+    // Make AJAX request to retrieve image URLs from server
+    $.ajax({
+      url: 'get_images.php',
+      type: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        // Add images to carousel
+        var carouselInner = $('.carousel-inner');
+        for (var i = 0; i < data.length; i++) {
+          var imagePath = data[i].imagepath;
+          var caption = data[i].Receipe_Name + ' - ' + data[i].Preptime + ' - ' + data[i].Cooktime;
+          var caption = 'Receipe Name: ' + data[i].Receipe_Name + ' ' + 'Prep Time: ' +' - ' + data[i].Preptime;
+
+          var active = i == 0 ? 'active' : '';
+          var item = $('<div>').addClass('carousel-item ' + active).appendTo(carouselInner);
+          $('<img>').attr('src', imagePath).addClass('d-block w-100').appendTo(item).click(function() {
+            // Fetch the recipe ID from the data attribute of the clicked image
+            var recipeId = $(this).data('recipe-id');
+            // Navigate to the ViewRecipe page with the recipe ID as a query parameter
+            window.location.href = 'ViewReceipe.html?recipe_id=' + recipeId;
+          }).data('recipe-id', data[i].Receipe_Id);
+          $('<div>').addClass('carousel-caption d-none d-md-block').text(caption).appendTo(item);
+        }
+      },
+      error: function(jqXHR, textStatus, errorThrown) {
+        console.log('Error retrieving images: ' + textStatus + ', ' + errorThrown);
+      }
+    });
+
+    // new code for table creation  
+
+
+        Getchoice();
+  });
+
+
+function Getchoice()
+ {
+  $.ajax({
+    url: 'get_matching_recipe_ids.php',
+    type: 'POST',
+    dataType: 'json',
+  
+    success: function(data) {
+
+            var recipeIds = [];
+      var recipes = data;
+      console.log("Array");
+      console.log(recipes);
+      var l1 =recipes.length;
+      console.log("Length"+ l1);
+
+
+      // Get the HTML element to append the table to
+      var heading = document.getElementById("choice1");
+        heading.style.display = "block";
+
+                   // Create the table element
+            // Create the table element
+        var table = document.createElement("table");
+
+        // Create the table headers
+        var headers = ["Receipe Name", "Author Name", "Description", "Catagory", "Cuisine", "View"];
+        var thead = document.createElement("thead");
+        var tr = document.createElement("tr");
+        for (var i = 0; i < headers.length; i++) {
+          var th = document.createElement("th");
+          th.appendChild(document.createTextNode(headers[i]));
+          tr.appendChild(th);
+        }
+        thead.appendChild(tr);
+        table.appendChild(thead);
+
+        // Create the table rows with recipe data
+        var tbody = document.createElement("tbody");
+        for (var i = 0; i < l1; i++) {
+          var tr = document.createElement("tr");
+
+          // Create the table cells with recipe data
+          var tdName = document.createElement("td");
+          tdName.appendChild(document.createTextNode(recipes[i].Receipe_Name));
+          tr.appendChild(tdName);
+
+          var tdAuthor = document.createElement("td");
+          tdAuthor.appendChild(document.createTextNode(recipes[i].Author));
+          tr.appendChild(tdAuthor);
+
+          var tdDescription = document.createElement("td");
+          tdDescription.appendChild(document.createTextNode(recipes[i].ReceipeDesc));
+          tr.appendChild(tdDescription);
+
+          var tdCourse = document.createElement("td");
+          tdCourse.appendChild(document.createTextNode(recipes[i].Course_Cata));
+          tr.appendChild(tdCourse);
+
+          var tdCuisine = document.createElement("td");
+          tdCuisine.appendChild(document.createTextNode(recipes[i].Cusine));
+          tr.appendChild(tdCuisine);
+
+          var tdView = document.createElement("td");
+          var viewLink = document.createElement("a");
+
+          viewLink.setAttribute("href", "ViewReceipe.html?recipe_id=" + recipes[i].Receipe_Id);
+          viewLink.appendChild(document.createTextNode("View"));
+          tdView.appendChild(viewLink);
+          tr.appendChild(tdView);
+
+          tbody.appendChild(tr);
+        }
+
+        // Add the table body to the table
+        table.appendChild(tbody);
+
+        // Add the table to the element
+        heading.appendChild(table);
+
+
+      // Call another function to fetch recipe details based on the IDs
+    },
+    error: function(xhr, status, error) {
+      console.error('Error getting matching recipe IDs:', error);
+    }
+  });
+}
+
+
+
+</script>
+<style>
+ 
+  .carousel-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    color: #fff;
+    text-shadow: 1px 1px 2px #000;
+  }
+
+  .carousel-inner img {
+  width: 200px;
+  height: 300px;
+}
+
+#carouselExampleControls {
+  width: 1000px;
+  height: 500px;
+}
+
+.showchoisetable {
+      display: none;
+    }
+    
+ h2 {
+    color: #555;
+  }
+</style>
+   
+
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
+                 <link rel="stylesheet" href="css/menubar.css" media="screen">
+
+                                            
+
+                </head>
+            
+              
+ <body className='snippet-body'>
+ <body id="body-pd">
+
+    <!-- Header Navigation Section -->
+   <header class="header" id="header">
+    <div class="col-sm-1"><i class='bx bx-menu' id="header-toggle"></i></div>
+    <div class="l-navbar" id="nav-bar">
+  <nav class="nav">
+    <div class="menu-item"> 
+      <a href="Viewprofile.html" class="nav_logo"> 
+        <i class='bx bx-layer nav_logo-icon'></i> 
+        <span class="nav_logo-name">View/Edit Profile</span> 
+      </a>
+    </div>
+    <div class="menu-item"> 
+      <a href="SearchReceipe.html" class="nav_logo"> 
+        <i class='bx bx-layer nav_logo-icon'></i> 
+        <span class="nav_logo-name">Search Receipes</span> 
+      </a>
+    </div>
+    <div class="menu-item"> 
+      <a href="CreateReceipe.html" class="nav_logo"> 
+        <i class='bx bx-layer nav_logo-icon'></i> 
+        <span class="nav_logo-name">Create Receipe</span> 
+      </a>
+    </div>
+       <div class="menu-item"> 
+      <a href="ViewAllReceipe.html" class="nav_logo"> 
+                <i class='bx bx-layer nav_logo-icon'></i> 
+    <span class="nav_logo-name">Update/<br>Delete Receipe</span> 
+      </a>
+    </div>
+       <div class="menu-item"> 
+    <a href="#" class="nav_link" id="cancel-subscription-btn" onclick="showCancelPopup()">
+                    <i class='bx bx-layer nav_logo-icon'></i> 
+              <span class="nav_logo-name">Cancel <br> Membership</span> 
+      </a>
+    </div>
+    <div class="menu-item">
+    <a href="#" class="nav_link" id="cancel-account-btn" onclick="showCancelPopup1()">
+      <i class='bx bx-log-out nav_icon'></i> 
+      <span class="nav_name">Delete Account</span> 
+    </a>
+</div>
+     <div class="menu-item">
+    <a href="logout.php" class="nav_link"> 
+      <i class='bx bx-log-out nav_icon'></i> 
+      <span class="nav_name">SignOut</span> 
+    </a>
+</div>
+  </nav>
+</div>
+<script type="text/javascript">
+function showCancelPopup() {
+  document.getElementById("cancel-popup").style.display = "block";
+}
+
+function showCancelPopup1() {
+  document.getElementById("cancel-popup1").style.display = "block";
+}
+function hideCancelPopup() {
+  document.getElementById("cancel-popup").style.display = "none";
+}
+function hideCancelPopup1() {
+  document.getElementById("cancel-popup1").style.display = "none";
+}
+
+    </script>
+
+
+         
+         
+    <div class ="col-sm-11">
+    
+    <a class="navbar-brand" href="#">Welcome to the Cookbook Network!</a>
+
+     <a href="index.html" class="py-4 px-2 text-base font-regular primary-color">Home</a>
+     <a href="contact.html" class="py-4 px-2 text-base font-regular primary-color">Contact Us</a>
+     <a id="nav-profile-img" href="profile.html" class="none md:visible">
+            
+      
+            </a>
+    </div>
+     
+            <!-- Mobile menu button -->
+          <div class="md:hidden flex items-center">
+            <button class="outline-none mobile-menu-button">
+            <svg class=" w-6 h-6 text-gray-500 hover:text-blue-600"
+              x-show="!showMenu"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          </button>
+          </div>
+
+    
+  
+
+        <nav class="bg-white shadow-lg fadeInTop">
+      <div class="max-w-2xl mx-auto px-2">
+        <div class="flex justify-between">
+          
+          <!-- Secondary Navbar items -->
+          
+          <!-- Mobile menu button -->
+          
+        </div>
+      
+      <!-- mobile menu -->
+    
+      <script>
+        const btn = document.querySelector("button.mobile-menu-button");
+        const menu = document.querySelector(".mobile-menu");
+
+        btn.addEventListener("click", () => {
+          menu.classList.toggle("hidden");
+        });
+      </script>
+    </nav>
+    </header>
+
+<!--Container Main start-->
+         <div class="container mx-auto my-10 p-5">
+    
+            <div class="container text-center">
+  <h2>Recipes created by you</h2>
+</div>
+         <section class="u-align-center u-clearfix u-grey-5 u-section-1" id="carousel_1a8c">
+        
+            <!-- HTML code for carousel -->
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner"></div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+      
+          
+       
+    
+  
+       </section>
+  </div>
+
+      <div class="showchoisetable" id="choice1">
+          <h2>Recipes For You </h2>
+
+      </div>
+      
+  
+    <!--Container Main end-->
+  
+          <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js'></script>
+                                <script type='text/javascript' src='#'></script>
+                                <script type='text/javascript' src='#'></script>
+                                <script type='text/javascript' src='#'></script>
+                                <script type='text/javascript'>document.addEventListener("DOMContentLoaded", function(event) {
+   
+const showNavbar = (toggleId, navId, bodyId, headerId) =>{
+const toggle = document.getElementById(toggleId),
+nav = document.getElementById(navId),
+bodypd = document.getElementById(bodyId),
+headerpd = document.getElementById(headerId)
+
+// Validate that all variables exist
+if(toggle && nav && bodypd && headerpd){
+toggle.addEventListener('click', ()=>{
+// show navbar
+nav.classList.toggle('show')
+// change icon
+toggle.classList.toggle('bx-x')
+// add padding to body
+bodypd.classList.toggle('body-pd')
+// add padding to header
+headerpd.classList.toggle('body-pd')
+})
+}
+}
+
+showNavbar('header-toggle','nav-bar','body-pd','header')
+
+/*===== LINK ACTIVE =====*/
+const linkColor = document.querySelectorAll('.nav_link')
+
+function colorLink(){
+if(linkColor){
+linkColor.forEach(l=> l.classList.remove('active'))
+this.classList.add('active')
+}
+}
+linkColor.forEach(l=> l.addEventListener('click', colorLink))
+
+ // Your code to run since DOM is loaded and ready
+});</script>
+                                <script type='text/javascript'>var myLink = document.querySelector('a[href="#"]');
+                                myLink.addEventListener('click', function(e) {
+                                  e.preventDefault();
+                                });</script>      
+    <div class="container mx-auto my-5 p-5">
+        <div class="md:flex no-wrap md:-mx-2">
+            
+            </div>
+            <div class="my-4"></div>
+            <!-- Right Side -->
+            
+    </div>
+
+
+
+<div id="cancel-popup" style="display: none;">
+     <div class="cancel-icon" onclick="hideCancelPopup()">
+    <i class="bx bx-x cancel-icon" onclick="hideCancelPopup()"></i>
+  </div>
+    <form method="post" action="removemembership.php">
+          <p><em>Note: The subscription price is non-refundable.</em></p>
+
+        <label for="cancel-reason">Reason for cancellation:</label><br>
+        <textarea id="cancel-reason" name="cancel-reason"></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+
+
+<div id="cancel-popup1" style="display: none;">
+     <div class="cancel-icon1" onclick="hideCancelPopup1()">
+            <i class="bx bx-x cancel-icon" onclick="hideCancelPopup1()"></i>
+
+    <i class="fas fa-times"></i>
+  </div>
+    <form method="post" action="removeaccount.php">
+
+        <label for="cancel-reason1">Reason for cancellation:</label><br>
+        <textarea id="cancel-reason1" name="cancel-reason"></textarea><br>
+        <button type="submit1">Submit</button>
+    </form>
+</div>
+
+
+    <!-- Foooter -->
+<section class="bg-blue-600 mt-52">
+    <div class="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+        <div class="flex justify-center mt-8 space-x-6">
+            <a href="" class="text-gray-50 hover:text-white">
+                <span class="sr-only">Facebook</span>
+               
+            </a>
+            <a href="" class="text-gray-50 hover:text-white">
+                <span class="sr-only">Twitter</span>
+                
+            </a>
+            <a href="" class="text-gray-50 hover:text-white">
+                <span class="sr-only">GitHub</span>
+             
+            </a>
+           
+        </div>
+        <p class="mt-8 text-base leading-6 text-center text-gray-50">
+           
+        </p>
+    
+</section>
+
+   
+
+</body>
+</html>

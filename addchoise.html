@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+<head>
+<title>
+            Cookbook Network
+        </title>
+  <!-- ... -->
+
+        <meta name="description" content="Social Network for food">
+        <meta author="Janieel Shah, Dharmay Prajapati, and Jose M Serra Jr">
+		
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+       
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/js/bootstrap.bundle.min.js"></script>
+		
+
+
+ <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 5.6.2, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    
+	<script type="text/javascript">
+	//	
+
+$(document).ready(function() {
+
+  // code to be executed when the DOM is ready
+
+  var user_id = localStorage.getItem('last_user_id');
+    // var user_id = 6;
+    document.getElementById('hidden-user').value = user_id;
+    alert("User" + user_id);
+
+    // do something with the user ID
+    console.log('User ID:', user_id);
+});
+
+
+
+	</script>
+</head>
+<body class="bg-blue-50">
+<nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Welcome to the Cookbook Network!</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                  </li>
+                  
+                  <li class="nav-item">
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Contact Us</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <div class="container-fluid">
+            <div class="container text-center">
+              <div class="row">
+                <div class="col">
+                  
+                </div>
+              </div>
+                </div>  
+              </div>
+         
+		
+          
+			
+          </div>
+		  
+		 	  <section class="u-align-center u-clearfix u-grey-5 u-section-1" id="carousel_1a8c">
+			  
+			  
+    <!--Login Section-->
+	<div class="bg-grey-lighter min-h-screen flex flex-col">
+        <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+		<form name ='choiceform' action='addcusyerchoice.php' method='POST'>
+            <div class="bg-white px-20 py-20 rounded shadow-md text-black w-full">
+                <h1 class="mb-8 text-3xl text-center font-medium text-blue-600">Please Tell Us More about your Choices</h1>
+
+                 <input type="hidden" id="hidden-user" name="user_id" value="">
+
+					
+					 
+					
+      <div class="grid md:grid-cols-1 mt-2">
+			
+  <fieldset>
+    <legend>Recipe Categories</legend>
+    <div>
+      <input type="checkbox" id="appetizers" name="recipe_category[]" value="Appetizer">
+      <label for="appetizers">Appetizers</label>
+    </div>
+    <div>
+      <input type="checkbox" id="bread" name="recipe_category[]" value="Bread">
+      <label for="bread">Bread</label>
+    </div>
+    <div>
+      <input type="checkbox" id="main_dish" name="recipe_category[]" value="Main Dish">
+      <label for="main_dish">Main Dish</label>
+    </div>
+    <div>
+      <input type="checkbox" id="salad" name="recipe_category[]" value="Salad">
+      <label for="salad">Salad</label>
+    </div>
+    <div>
+      <input type="checkbox" id="soups" name="recipe_category[]" value="Soups">
+      <label for="soups">Soups</label>
+    </div>
+    <div>
+      <input type="checkbox" id="snacks" name="recipe_category[]" value="Snacks">
+      <label for="snacks">Snacks</label>
+    </div>
+  </fieldset>
+
+        </div>
+		
+		      <div class="grid md:grid-cols-1 mt-2">
+    <legend>Recipe Cuisine</legend>
+
+
+
+
+
+
+
+<div class="grid grid-cols-2 gap-4">
+  <div>
+    <input type="checkbox" id="cuisine_africa" name="nmrecipe_cuisine[]" value="Africa and Middle East">
+    <label for="cuisine_africa">Africa & Middle East</label>
+  </div>
+  <div>
+    <input type="checkbox" id="cuisine_asia" name="nmrecipe_cuisine[]" value="Asia and Pacific Ocean">
+    <label for="cuisine_asia">Asia & Pacific Ocean</label>
+  </div>
+  <div>
+    <input type="checkbox" id="cuisine_europe" name="nmrecipe_cuisine[]" value="Europe">
+    <label for="cuisine_europe">Europe</label>
+  </div>
+  <div>
+    <input type="checkbox" id="cuisine_america" name="nmrecipe_cuisine[]" value="North and South America">
+    <label for="cuisine_america">North & South America</label>
+  </div>
+  <div>
+    <input type="checkbox" id="cuisine_other" name="nmrecipe_cuisine[]" value="Other">
+    <label for="cuisine_other">Other</label>
+  </div>
+</div>
+ </div>
+	<div>
+  <a href="login.html" class="w-full text-center py-3 rounded bg-blue-600 text-white hover:bg-gray-700 focus:outline-none my-1 font-regular inline-block mr-1">Skip</a>
+  <button type="submit" onClick=" " class="w-full text-center py-3 rounded bg-blue-600 text-white hover:bg-blue-700 focus:outline-none my-1 font-regular inline-block ml-1">Submit</button>
+</div>
+			</form>
+
+            
+        </div>
+    </div>
+	        </div>
+
+ </section>
+		
+
+
+	<!-- Foooter -->
+<section class="bg-blue-600">
+    <div class="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+        <div class="flex justify-center mt-8 space-x-6">
+            <a href="" class="text-gray-50 hover:text-white">
+               
+            </a>
+            <a href="" class="text-gray-50 hover:text-white">
+                
+            </a>
+            <a href="" class="text-gray-50 hover:text-white">
+             
+            </a>
+           
+        </div>
+        <p class="mt-8 text-base leading-6 text-center text-gray-50">
+        </p>
+    
+</section>
+
+
+</body>
+
+</html>

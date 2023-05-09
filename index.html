@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            Cookbook Network
+        </title>
+        <meta name="description" content="Social Network for food">
+        <meta author="Janieel Shah, Dharmay Prajapati, and Jose M Serra Jr">
+      
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    
+<link rel="stylesheet" href="css/index.css" media="screen">
+
+
+    
+        <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+
+
+  <!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
+<!-- Bootstrap CSS -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css" />
+
+
+<!-- this helps to affect for carosol -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+
+<!-- this also helps for carosol -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<!-- CarolSol -->
+         <script type ="text/javascript" src="js/index.js">  </script>
+
+  <style type="text/css">
+  #category1.image1 {
+    display: none;
+  }
+
+  .carousel-control.left {
+    display: none;
+  }
+
+ .carousel-inner > .item > a > img {
+  height: 300px;
+  width: 800px; /* Change this to increase the width */
+  margin: 0 auto;
+}
+  .carousel-caption {
+    bottom: 50px;
+  }
+
+  .image-container1 {
+    display: flex;
+    flex-wrap: nowrap;
+    scroll-snap-type: x mandatory;
+    overflow-x: auto;
+  }
+
+  .image-container1 img {
+    scroll-snap-align: center;
+    margin-right: 10px;
+    max-height: 300px;
+    max-width: 800px;
+  }
+
+  .recipes-list {
+    width: 1400px;
+    margin: 0 auto;
+  }
+
+  /* Add a class to the images you want to apply the effect to */
+  .carolsol-image {
+    filter: url(#carolsol);
+    filter: carolsol;
+  }
+
+  /*  */
+  #search-container {
+  display: flex;
+  align-items: center;
+
+}
+
+/* */
+.images-container {
+  width: 500px;
+  height: 80px;
+
+}
+
+/* */
+.category-container-apetisers {
+  margin-top: 20px; /* adjust the top margin as needed */
+}
+
+.images-container {
+  margin-top: 10px;
+}
+.category-container-apetisers h4 {
+  margin-bottom: 10px; /* adjust the bottom margin as needed */
+}
+</style>
+         
+    </head>
+    <body class="bg-blue-50">
+  
+  <nav class="navbar-expand-lg bg-light">
+            <div class ="col-sm-11">
+    
+    <a class="navbar-brand" href="#">Welcome to the Cookbook Network!</a>
+
+     <a href="index.html" class="py-4 px-2 text-base font-regular primary-color">Home</a>
+     <a href="ContactUs.html" class="py-4 px-2 text-base font-regular primary-color">Contact Us</a>
+     <a href="login.html" class="py-4 px-2 text-base font-regular primary-color">Login</a>
+     <a href="Sign-up.html" class="py-4 px-2 text-base font-regular primary-color">Sign Up</a>
+
+     <a id="nav-profile-img" href="profile.html" class="none md:visible">
+            
+      
+            </a>
+    </div>
+    
+    
+          </nav>
+          <div class="container-fluid">
+            <div class="container text-center">
+              <div class="row">
+                <div class="col">
+                  
+                </div>
+              </div>
+                </div>  
+              </div>
+         
+    
+          
+      
+           
+      
+      
+   <div class="row mt-3">
+  <div class="col-sm-5 offset-sm-2">
+    <div class="input-group" id="search-container">
+      <input type="text" id="search-box" class="form-control" placeholder="Type to search">
+      <button class="btn btn-primary" type="button" id="search-btn" onclick="searchRecipes()">Search</button>
+    </div>
+    <div id="resultsContainer"></div>
+    <div id="search-results" class="list-group mt-3"></div>
+  </div>
+</div>
+      
+    
+    <section class="u-align-center u-clearfix u-grey-5 u-section-1" id="carousel_1a8c">
+    
+   <div class="image1" id="category1">
+
+            <div class="category-container-apetisers">
+  </div>
+
+      </div>
+
+<div class="image2" id="category2">
+
+            <div class="category-container-Main-Dish">
+  </div>
+
+      </div>
+      
+   <div class="image3" id="category3">
+
+            <div class="category-container-Bread">
+  </div>
+
+      </div>
+
+      <div class="image4" id="category4">
+
+            <div class="category-container-Salad">
+  </div>
+
+      </div>
+
+
+      </div>
+    </section>
+  
+  
+
+<!-- dynamically added css -->
+     
+     <div class="stats">
+  
+     <div class="col-12">
+                    <div class="elements-title mb-80">
+                       <center> <h2>Milestone</h2></center>
+                    </div>
+                </div><br>
+
+                <div class="col-12">
+                    <div class="delicious-cool-facts-area">
+                        <div class="row">
+                            <!-- Single Cool Fact -->
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <div class="single-cool-fact">
+                                    <img src="Images/salad.png" alt="">
+                                    <h3><span class="counter">1287</span></h3>
+                                    <h6>Amazing receipies</h6>
+                                </div>
+                            </div>
+
+                            <!-- Single Cool Fact -->
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <div class="single-cool-fact">
+                                    <img src="Images/hamburger.png" alt="">
+                                    <h3><span class="counter">25</span></h3>
+                                    <h6>Burger receipies</h6>
+                                </div>
+                            </div>
+
+                            <!-- Single Cool Fact -->
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <div class="single-cool-fact">
+                                    <img src="Images/rib.png" alt="">
+                                    <h3><span class="counter">471</span></h3>
+                                    <h6>Meat receipies</h6>
+                                </div>
+                            </div>
+
+                            <!-- Single Cool Fact -->
+                            <div class="col-12 col-sm-6 col-lg-3">
+                                <div class="single-cool-fact">
+                                    <img src="Images/pancake.png" alt="">
+                                    <h3><span class="counter">326</span></h3>
+                                    <h6>Desert receipies</h6>
+                                </div>
+                            </div>
+              
+                                      </div>
+                    </div>
+                </div>
+        
+        
+    
+     
+      
+        </div>
+        
+    
+  </div>
+        
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    </body>
+</html>
