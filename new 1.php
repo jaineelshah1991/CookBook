@@ -56,13 +56,6 @@ try
                      else
                      {
 
-                    require_once('../vendor/autoload.php');
-
-                    \Stripe\Stripe::setApiKey('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');
-$charge = \Stripe\Charge::create([
-  'amount' => 100, // amount in cents
-  'currency' => 'usd',
-  'source' => $_POST['stripeToken'],
 ]);
 
              $sql_query="INSERT into User_Info (User_id,FirstName,LastName,City,ZipCode,Mobile,Email,SecurityQuestion,Answer,Status,CreatedDate) 
